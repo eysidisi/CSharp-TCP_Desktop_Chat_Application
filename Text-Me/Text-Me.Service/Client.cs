@@ -19,6 +19,9 @@ namespace Text_Me.Service
 
         TcpClient _tcpClient;
 
+        public Action<ConnectionResult> OnConnection;
+        public Action<string> OnMessageReceived;
+
         public Client()
         {
             IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, 0);
@@ -28,20 +31,18 @@ namespace Text_Me.Service
         /// <summary>
         /// Async connection function
         /// </summary>
-        public void Connect(string remoteIPAddress, int remotePortNum, Action<ConnectionResult> resultFunc)
+        public void Connect(string remoteIPAddress, int remotePortNum)
         {
-            _tcpClient.BeginConnect(remoteIPAddress, remotePortNum, new AsyncCallback(ConnectCallback), resultFunc);
+            _tcpClient.BeginConnect(remoteIPAddress, remotePortNum, new AsyncCallback(ConnectCallback), null);
         }
         public void SendMessage(string message)
         {
-            byte[] bytesToSend= Encoding.UTF8.GetBytes(message);
+            byte[] bytesToSend = Encoding.UTF8.GetBytes(message);
 
             _tcpClient.Client.Send(bytesToSend);
         }
         private void ConnectCallback(IAsyncResult ar)
         {
-            var resultFunc = (Action<ConnectionResult>)ar.AsyncState;
-
             try
             {
                 _tcpClient.EndConnect(ar);
@@ -53,12 +54,12 @@ namespace Text_Me.Service
 
             if (_tcpClient.Connected == true)
             {
-                resultFunc(ConnectionResult.SUCCESS);
+                OnConnection(ConnectionResult.SUCCESS);
             }
 
             else
             {
-                resultFunc(ConnectionResult.FAILURE);
+                OnConnection(ConnectionResult.FAILURE);
             }
         }
     }

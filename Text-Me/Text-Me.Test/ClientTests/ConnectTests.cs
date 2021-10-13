@@ -24,8 +24,9 @@ namespace Text_Me.Test.ClientTests
             int serverPortNum = ((IPEndPoint)server.LocalEndpoint).Port;
 
             Client client = new Client();
+            client.OnConnection += ResultFunc;
             ConnectionResult connectionResult = ConnectionResult.UNKNOWN;
-            client.Connect(IPAddress.Loopback.ToString(), serverPortNum, ResultFunc);
+            client.Connect(IPAddress.Loopback.ToString(), serverPortNum);
             void ResultFunc(ConnectionResult result)
             {
                 connectionResult = result;
@@ -48,8 +49,10 @@ namespace Text_Me.Test.ClientTests
             int serverPortNum = ((IPEndPoint)server.LocalEndpoint).Port;
 
             Client client = new Client();
+            client.OnConnection += ResultFunc;
             ConnectionResult connectionResult = ConnectionResult.UNKNOWN;
-            client.Connect(IPAddress.Loopback.ToString(), serverPortNum - 1, ResultFunc);
+            
+            client.Connect(IPAddress.Loopback.ToString(), serverPortNum - 1);
             void ResultFunc(ConnectionResult result)
             {
                 connectionResult = result;

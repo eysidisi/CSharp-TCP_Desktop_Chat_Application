@@ -24,12 +24,12 @@ namespace Text_Me.Test.ClientTests
 
 
             var client = new Client();
-            client.Connect(IPAddress.Loopback.ToString(), serverPortNum, (a) => { });
+            client.Connect(IPAddress.Loopback.ToString(), serverPortNum);
 
 
             string messageToSend = "Hellö Wörld! şİç";
             client.SendMessage(messageToSend);
-           
+
             var connectedClient = server.AcceptTcpClient();
             NetworkStream stream = connectedClient.GetStream();
 
