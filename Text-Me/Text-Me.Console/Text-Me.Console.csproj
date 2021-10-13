@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Text-Me.Service\Text-Me.Service.csproj" />
+  </ItemGroup>
+
 </Project>

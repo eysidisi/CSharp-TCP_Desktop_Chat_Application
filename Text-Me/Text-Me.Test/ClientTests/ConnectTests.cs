@@ -49,7 +49,7 @@ namespace Text_Me.Test.ClientTests
 
             Client client = new Client();
             ConnectionResult connectionResult = ConnectionResult.UNKNOWN;
-            client.Connect(IPAddress.Loopback.ToString(), serverPortNum-1, ResultFunc);
+            client.Connect(IPAddress.Loopback.ToString(), serverPortNum - 1, ResultFunc);
             void ResultFunc(ConnectionResult result)
             {
                 connectionResult = result;

@@ -32,7 +32,12 @@ namespace Text_Me.Service
         {
             _tcpClient.BeginConnect(remoteIPAddress, remotePortNum, new AsyncCallback(ConnectCallback), resultFunc);
         }
+        public void SendMessage(string message)
+        {
+            byte[] bytesToSend= Encoding.UTF8.GetBytes(message);
 
+            _tcpClient.Client.Send(bytesToSend);
+        }
         private void ConnectCallback(IAsyncResult ar)
         {
             var resultFunc = (Action<ConnectionResult>)ar.AsyncState;
@@ -43,7 +48,7 @@ namespace Text_Me.Service
             }
             catch (SocketException)
             {
-                
+
             }
 
             if (_tcpClient.Connected == true)
