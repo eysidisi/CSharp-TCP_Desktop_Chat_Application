@@ -26,6 +26,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
+    vsVersion: '17.0'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
@@ -34,9 +35,11 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\Text-Me.*Test*.dll
-      !**\*TestAdapter.dll
+      **\bin\$(BuildConfiguration)\**\Text-Me.test.dll
       !**\obj\**
+      !**\ref\**
+      !**\xunit.runner.visualstudio.testadapter.dll
+      !**\xunit.runner.visualstudio.dotnetcore.testadapter.dll
     searchFolder: '$(System.DefaultWorkingDirectory)'
     runTestsInIsolation: true
     codeCoverageEnabled: true
