@@ -14,6 +14,19 @@ namespace Text_Me.Test.ClientTests
 {
     public class ConnectTests
     {
+
+        private static readonly IPEndPoint DefaultLoopbackEndpoint = new IPEndPoint(IPAddress.Loopback, port: 0);
+
+        public static int GetAvailablePort()
+        {
+            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+            {
+                socket.Bind(DefaultLoopbackEndpoint);
+                return ((IPEndPoint)socket.LocalEndPoint).Port;
+            }
+        }
+
+
         [Fact]
         public void ClientShouldConnectToAServer()
         {
@@ -52,7 +65,7 @@ namespace Text_Me.Test.ClientTests
             client.OnConnection += ResultFunc;
             ConnectionResult connectionResult = ConnectionResult.UNKNOWN;
             
-            client.Connect(IPAddress.Loopback.ToString(), serverPortNum - 1);
+            client.Connect(IPAddress.Loopback.ToString(), GetAvailablePort());
             void ResultFunc(ConnectionResult result)
             {
                 connectionResult = result;
