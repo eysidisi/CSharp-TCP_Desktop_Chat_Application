@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Text_Me.Service
 {
+    public enum ConnectionResult
+    {
+        SUCCESS,
+        FAILURE,
+        UNKNOWN
+    };
+
     public class Client
     {
-        public enum ConnectionResult
-        {
-            SUCCESS,
-            FAILURE,
-            UNKNOWN
-        };
-
         TcpClient _tcpClient;
 
         public Action<ConnectionResult> OnConnection;
@@ -54,12 +54,12 @@ namespace Text_Me.Service
 
             if (_tcpClient.Connected == true)
             {
-                OnConnection(ConnectionResult.SUCCESS);
+                OnConnection?.Invoke(ConnectionResult.SUCCESS);
             }
 
             else
             {
-                OnConnection(ConnectionResult.FAILURE);
+                OnConnection?.Invoke(ConnectionResult.FAILURE);
             }
         }
     }
