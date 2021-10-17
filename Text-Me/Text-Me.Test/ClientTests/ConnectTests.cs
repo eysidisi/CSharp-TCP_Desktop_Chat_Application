@@ -35,6 +35,8 @@ namespace Text_Me.Test.ClientTests
             }
 
             receiveDone.WaitOne();
+            
+            server.Stop();  
 
             Assert.True(connectionResult == ConnectionResult.SUCCESS);
         }
@@ -61,6 +63,8 @@ namespace Text_Me.Test.ClientTests
             }
 
             receiveDone.WaitOne();
+         
+            server.Stop();
 
             Assert.True(connectionResult == ConnectionResult.FAILURE);
         }

@@ -23,9 +23,9 @@ namespace Text_Me.Test.ServerTests
             string sentMessage = "Hellö Wörld";
             string receivedMessage = "";
 
-            int serverPortNum=Helpers.GetAvailablePort();   
+            int serverPortNum = Helpers.GetAvailablePort();
             Server server = new Server(IPAddress.Loopback.ToString(), serverPortNum);
-            
+
             server.OnMessageReceived += MessageReceivedFunc;
             void MessageReceivedFunc(string message)
             {
@@ -40,6 +40,8 @@ namespace Text_Me.Test.ServerTests
             tcpClient.GetStream().Write(bytesToSend, 0, bytesToSend.Length);
 
             receiveDone.WaitOne();
+
+            tcpClient.Close();
 
             Assert.True(receivedMessage == sentMessage);
         }

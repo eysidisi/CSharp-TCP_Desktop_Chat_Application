@@ -26,7 +26,6 @@ namespace Text_Me.Test.ClientTests
             var client = new Client();
             client.Connect(IPAddress.Loopback.ToString(), serverPortNum);
 
-
             string messageToSend = "Hellö Wörld! şİç";
             client.SendMessage(messageToSend);
 
@@ -39,6 +38,7 @@ namespace Text_Me.Test.ClientTests
             i = stream.Read(buffer, 0, buffer.Length);
             var receivedStr = Encoding.UTF8.GetString(buffer, 0, i);
 
+            server.Stop();
             Assert.Equal(messageToSend, receivedStr);
         }
     }
