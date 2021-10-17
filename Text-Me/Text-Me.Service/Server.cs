@@ -22,7 +22,7 @@ namespace Text_Me.Service
         /// If no ip address provided uses first IPV4 address it finds in ip address list of device
         /// </summary>
         /// <param name="ipAddressStr"></param>
-        public Server(string ipAddressStr = null)
+        public Server(string ipAddressStr = null, int portNum = _portNum)
         {
             if (ipAddressStr == null)
             {
@@ -31,7 +31,7 @@ namespace Text_Me.Service
 
             IPAddress ipAddress = IPAddress.Parse(ipAddressStr);
 
-            _listenerSocket = new TcpListener(ipAddress, _portNum);
+            _listenerSocket = new TcpListener(ipAddress, portNum);
         }
 
         public void StartAcceptingConnection()
@@ -43,7 +43,7 @@ namespace Text_Me.Service
         private void AcceptTcpClientCallback(IAsyncResult ar)
         {
             TcpClient _clientSocket = _listenerSocket.EndAcceptTcpClient(ar);
-            OnConnection(ConnectionResult.SUCCESS);
+            OnConnection?.Invoke(ConnectionResult.SUCCESS);
             StartReceivingMessage(_clientSocket.GetStream());
         }
 
@@ -60,9 +60,8 @@ namespace Text_Me.Service
                 Console.WriteLine("Received: {0}", receivedMessage);
 
                 // Send back a response.
-                OnMessageReceived(receivedMessage);
+                OnMessageReceived?.Invoke(receivedMessage);
             }
-
         }
 
         private string GetLocalIPAddress()
