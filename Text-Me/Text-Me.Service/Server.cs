@@ -11,6 +11,7 @@ namespace Text_Me.Service
     public class Server
     {
         TcpListener _listenerSocket;
+        TcpClient _clientSocket;
 
         const int _portNum = 3838;
         private const int BufferSize = 256;
@@ -42,13 +43,22 @@ namespace Text_Me.Service
 
         private void AcceptTcpClientCallback(IAsyncResult ar)
         {
-            TcpClient _clientSocket = _listenerSocket.EndAcceptTcpClient(ar);
+            _clientSocket = _listenerSocket.EndAcceptTcpClient(ar);
             OnConnection?.Invoke(ConnectionResult.SUCCESS);
-            StartReceivingMessage(_clientSocket.GetStream());
+            StartReceivingMessage();
         }
-
-        private void StartReceivingMessage(NetworkStream stream)
+        public void SendMessage(string message)
         {
+            NetworkStream stream = _clientSocket.GetStream();
+
+            byte[] bytesToSend = Encoding.Default.GetBytes(message);
+
+            stream.Write(bytesToSend);
+        }
+        private void StartReceivingMessage()
+        {
+            NetworkStream stream = _clientSocket.GetStream();
+
             byte[] receivedBytes = new byte[BufferSize];
             int numberOfBytesReceived;
 
