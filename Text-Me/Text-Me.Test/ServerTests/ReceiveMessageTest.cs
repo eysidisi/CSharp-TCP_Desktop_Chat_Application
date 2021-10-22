@@ -41,7 +41,7 @@ namespace Text_Me.Test.ServerTests
 
             receiveDone.WaitOne();
 
-            tcpClient.Close();
+            //tcpClient.Close();
 
             Assert.True(receivedMessage == sentMessage);
         }

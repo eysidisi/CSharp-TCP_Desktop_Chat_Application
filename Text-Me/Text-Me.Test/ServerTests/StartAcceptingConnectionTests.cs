@@ -34,7 +34,7 @@ namespace Text_Me.Test.ServerTests
             tcpClient.Connect(IPAddress.Loopback.ToString(), 3838);
 
             receiveDone.WaitOne();
-            tcpClient.Close();
+            //tcpClient.Close();
 
             Assert.True(connectionResult == ConnectionResult.SUCCESS);
         }
