@@ -19,7 +19,7 @@ namespace Text_Me.Test.UserStories
         [Fact]
         public void ClientSendsMessageToAnAlreadyActiveServer()
         {
-            int serverPortNum = 50000;
+            int serverPortNum = Helpers.GetAvailablePort();
             string iPAddress = IPAddress.Loopback.ToString();
             string messageToSend = "Motörhead Rulz!";
 

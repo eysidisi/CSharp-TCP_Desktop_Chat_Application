@@ -33,7 +33,7 @@ namespace Text_Me.Test.ClientTests
             
             receiveDone.WaitOne();
 
-            Assert.True(receivedMessage == sentMessage);
+            Assert.Equal( sentMessage, receivedMessage);
         }
 
         private void ClientReceivedMessage(string receivedMessage)
