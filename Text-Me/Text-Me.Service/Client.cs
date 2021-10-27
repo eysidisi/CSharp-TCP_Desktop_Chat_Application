@@ -17,6 +17,8 @@ namespace Text_Me.Service
 
     public class Client
     {
+        private const int BufferSize = 256;
+
         TcpClient _tcpClient;
 
         public Action<ConnectionResult> OnConnection;
@@ -55,6 +57,7 @@ namespace Text_Me.Service
             if (_tcpClient.Connected == true)
             {
                 OnConnection?.Invoke(ConnectionResult.SUCCESS);
+                StartReceivingMessage();
             }
 
             else
@@ -62,5 +65,25 @@ namespace Text_Me.Service
                 OnConnection?.Invoke(ConnectionResult.FAILURE);
             }
         }
+
+
+        private void StartReceivingMessage()
+        {
+            NetworkStream stream = _tcpClient.GetStream();
+
+            byte[] receivedBytes = new byte[BufferSize];
+            int numberOfBytesReceived;
+
+            // Loop to receive all the data sent by the client.
+            while (stream.CanRead && (numberOfBytesReceived = stream.Read(receivedBytes, 0, receivedBytes.Length)) != 0)
+            {
+                // Translate data bytes to a ASCII string.
+                string receivedMessage = Encoding.UTF8.GetString(receivedBytes, 0, numberOfBytesReceived);
+
+                // Send back a response.
+                OnMessageReceived?.Invoke(receivedMessage);
+            }
+        }
+
     }
 }
