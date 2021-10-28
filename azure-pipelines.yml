@@ -37,6 +37,7 @@ steps:
     testAssemblyVer2: |
       **\bin\$(BuildConfiguration)\**\Text-Me.test.dll
       !**\obj\**
+      !**\*TestAdapter.dll
       !**\ref\**
       !**\xunit.runner.visualstudio.testadapter.dll
       !**\xunit.runner.visualstudio.dotnetcore.testadapter.dll
