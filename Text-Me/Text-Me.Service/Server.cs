@@ -64,7 +64,7 @@ namespace Text_Me.Service
 
             while (_clientSocket.Connected)
             { // Loop to receive all the data sent by the client.
-                while (stream.CanRead && (numberOfBytesReceived = stream.Read(receivedBytes, 0, receivedBytes.Length)) != 0)
+                while (stream.DataAvailable && (numberOfBytesReceived = stream.Read(receivedBytes, 0, receivedBytes.Length)) != 0)
                 {
                     // Translate data bytes to a ASCII string.
                     string receivedMessage = Encoding.UTF8.GetString(receivedBytes, 0, numberOfBytesReceived);
