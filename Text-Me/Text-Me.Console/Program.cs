@@ -1,17 +1,40 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System.Net;
+﻿using System.Net;
 using Text_Me.Service;
-using static Text_Me.Service.Client;
-
-Client Client = new Client();
-
-Client.Connect(IPAddress.Loopback.ToString(), 63909);
-
-Console.ReadLine();
 
 
-void ConnectionResultCallback(ConnectionResult result)
+
+int serverPortNum = 49303;
+
+
+Client client = new Client();
+client.OnConnection += ClientConnection;
+client.OnMessageReceived += ClientMessageReceived;
+
+client.Connect(IPAddress.Loopback.ToString(), serverPortNum);
+
+
+while (true)
 {
-    Console.WriteLine(result);
+    string? input = Console.ReadLine();
+
+    if (input == null)
+    {
+        continue;
+    }
+    if (input == "qq")
+    {
+        break;
+    }
+
+    client.SendMessage(input);
+}
+
+
+void ClientConnection(ConnectionResult result)
+{
+    Console.WriteLine($"Connection resulted in {result}");
+}
+void ClientMessageReceived(string receivedMessage)
+{
+    Console.WriteLine($"Received: {receivedMessage}");
 }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text-Me.Service", "Text-Me.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text-Me.Test", "Text-Me.Test\Text-Me.Test.csproj", "{AA196A29-044F-4AA6-847B-CFA5F2D1B88A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text-Me.Console", "Text-Me.Console\Text-Me.Console.csproj", "{51431654-DEB9-40D6-82C9-37A900A70FD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text-Me-Client.Console", "Text-Me.Console\Text-Me-Client.Console.csproj", "{51431654-DEB9-40D6-82C9-37A900A70FD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
