@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text-Me.Test", "Text-Me.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text-Me-Client.Console", "Text-Me.Console\Text-Me-Client.Console.csproj", "{51431654-DEB9-40D6-82C9-37A900A70FD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text-Me-Server.Console", "Text-Me-Server.Console\Text-Me-Server.Console.csproj", "{E3598A28-7301-4961-9BE7-14D11515CEAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{51431654-DEB9-40D6-82C9-37A900A70FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51431654-DEB9-40D6-82C9-37A900A70FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51431654-DEB9-40D6-82C9-37A900A70FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3598A28-7301-4961-9BE7-14D11515CEAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3598A28-7301-4961-9BE7-14D11515CEAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3598A28-7301-4961-9BE7-14D11515CEAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3598A28-7301-4961-9BE7-14D11515CEAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
