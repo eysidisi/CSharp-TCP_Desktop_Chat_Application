@@ -35,7 +35,7 @@ namespace Text_Me.Test.UserStories
 
             // Connect to server
             client.Connect(iPAddress, serverPortNum);
-            client.OnConnection += ClientConnected;
+            client.OnConnectionStatusChanged += ClientConnected;
             connectionEstablished.WaitOne();
 
             // Send message

@@ -17,7 +17,7 @@ namespace Text_Me.Test.UserStories
         ManualResetEvent messageReceived = new ManualResetEvent(false);
 
         [Fact]
-        public void ServerCanSendMessageToConnectedClient()
+        public void ServerSendsMessageToConnectedClient()
         {
             int serverPortNum = Helpers.GetAvailablePort();
             string iPAddress = IPAddress.Loopback.ToString();

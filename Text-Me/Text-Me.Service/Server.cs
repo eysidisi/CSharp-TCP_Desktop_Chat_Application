@@ -67,8 +67,20 @@ namespace Text_Me.Service
                 while (stream.DataAvailable && (numberOfBytesReceived = stream.Read(receivedBytes, 0, receivedBytes.Length)) != 0)
                 {
                     // Translate data bytes to a ASCII string.
-                    string receivedMessage = Encoding.UTF8.GetString(receivedBytes, 0, numberOfBytesReceived);
+                    string receivedMessage = Encoding.Default.GetString(receivedBytes, 0, numberOfBytesReceived);
 
+                    // Don't log heartbeat message to the user
+                    if (receivedMessage.Equals(CommonMessages._heartBeatMessage))
+                    {
+                        continue;
+                    }
+
+                    // Heartbeat message and other messages can concatenate
+                    if (receivedMessage.Contains(CommonMessages._heartBeatMessage))
+                    {
+                        receivedMessage= receivedMessage.Replace(CommonMessages._heartBeatMessage, "");
+                    }
+                   
                     // Send back a response.
                     OnMessageReceived?.Invoke(receivedMessage);
                 }
