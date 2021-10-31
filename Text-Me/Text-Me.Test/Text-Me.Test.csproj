@@ -25,9 +25,4 @@
     <ProjectReference Include="..\Text-Me.Service\Text-Me.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ClientTests\" />
-    <Folder Include="ServerTests\" />
-  </ItemGroup>
-
 </Project>

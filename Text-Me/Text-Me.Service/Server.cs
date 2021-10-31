@@ -5,19 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
+using System.Threading;
 
 namespace Text_Me.Service
 {
-    public class Server
+    public class Server : NodeSocket
     {
         TcpListener _listenerSocket;
-        TcpClient _clientSocket;
-
         const int _portNum = 3838;
-        private const int BufferSize = 256;
-
-        public Action<ConnectionResult> OnConnection;
-        public Action<string> OnMessageReceived;
 
         /// <summary>
         /// If no ip address provided uses first IPV4 address it finds in ip address list of device
@@ -31,12 +26,19 @@ namespace Text_Me.Service
             }
 
             IPAddress ipAddress = IPAddress.Parse(ipAddressStr);
-
             _listenerSocket = new TcpListener(ipAddress, portNum);
         }
 
         public void StartAcceptingConnection()
         {
+            if (_listenerSocket.Server.IsBound == true)
+            {
+                OnLog?.Invoke("Server is aldready listening!");
+                return;
+            }
+
+            OnLog?.Invoke("Server started listening!");
+
             _listenerSocket.Start();
             _listenerSocket.BeginAcceptTcpClient(new AsyncCallback(AcceptTcpClientCallback), null);
         }
@@ -44,47 +46,9 @@ namespace Text_Me.Service
         private void AcceptTcpClientCallback(IAsyncResult ar)
         {
             _clientSocket = _listenerSocket.EndAcceptTcpClient(ar);
-            OnConnection?.Invoke(ConnectionResult.SUCCESS);
+            OnConnectionStatusChanged?.Invoke(ConnectionResult.SUCCESS);
+            _checkConnectionTimer = new Timer(HearthBeatFunc, null, 250, 1000);
             StartReceivingMessage();
-        }
-        public void SendMessage(string message)
-        {
-            NetworkStream stream = _clientSocket.GetStream();
-
-            byte[] bytesToSend = Encoding.Default.GetBytes(message);
-
-            stream.Write(bytesToSend);
-        }
-        private void StartReceivingMessage()
-        {
-            NetworkStream stream = _clientSocket.GetStream();
-
-            byte[] receivedBytes = new byte[BufferSize];
-            int numberOfBytesReceived;
-
-            while (_clientSocket.Connected)
-            { // Loop to receive all the data sent by the client.
-                while (stream.DataAvailable && (numberOfBytesReceived = stream.Read(receivedBytes, 0, receivedBytes.Length)) != 0)
-                {
-                    // Translate data bytes to a ASCII string.
-                    string receivedMessage = Encoding.Default.GetString(receivedBytes, 0, numberOfBytesReceived);
-
-                    // Don't log heartbeat message to the user
-                    if (receivedMessage.Equals(CommonMessages._heartBeatMessage))
-                    {
-                        continue;
-                    }
-
-                    // Heartbeat message and other messages can concatenate
-                    if (receivedMessage.Contains(CommonMessages._heartBeatMessage))
-                    {
-                        receivedMessage= receivedMessage.Replace(CommonMessages._heartBeatMessage, "");
-                    }
-                   
-                    // Send back a response.
-                    OnMessageReceived?.Invoke(receivedMessage);
-                }
-            }
         }
 
         private string GetLocalIPAddress()
@@ -98,6 +62,12 @@ namespace Text_Me.Service
                 }
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
+        protected override void CloseConnection()
+        {
+            _listenerSocket.Stop();
+            _clientSocket.Close();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Text_Me.Test.UserStories
 
             // Wait connection
             server.StartAcceptingConnection();
-            server.OnConnection += ClientConnected;
+            server.OnConnectionStatusChanged += ClientConnected;
 
             // Create client
             Client client = new Client();
