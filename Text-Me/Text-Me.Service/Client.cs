@@ -10,9 +10,8 @@ using System.Threading.Tasks;
 namespace Text_Me.Service
 {
 
-    public class Client:NodeSocket
+    public class Client : NodeSocket
     {
-
         public Client()
         {
         }
@@ -29,10 +28,10 @@ namespace Text_Me.Service
             _clientSocket = new TcpClient(localEndPoint);
             _clientSocket.BeginConnect(remoteIPAddress, remotePortNum, new AsyncCallback(ConnectCallback), null);
         }
-
+        public bool IsConnected { get { return _clientSocket.Connected; } }
         protected override void CloseConnection()
         {
-
+            //_clientSocket.Close();
         }
 
         private void ConnectCallback(IAsyncResult ar)

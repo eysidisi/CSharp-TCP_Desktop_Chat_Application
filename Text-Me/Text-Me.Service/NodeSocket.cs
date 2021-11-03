@@ -117,10 +117,9 @@ namespace Text_Me.Service
             if (CheckConnection() == false)
             {
                 _checkConnectionTimer.Dispose();
-                OnConnectionStatusChanged.Invoke(ConnectionResult.DISCONNECTED);
+                OnConnectionStatusChanged?.Invoke(ConnectionResult.DISCONNECTED);
                 CloseConnection();
             }
         }
-
     }
 }
