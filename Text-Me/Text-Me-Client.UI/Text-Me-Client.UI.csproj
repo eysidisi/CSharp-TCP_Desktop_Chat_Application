@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionUserControl.cs">
+    <Compile Include="UserControls\ConnectionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ConnectionUserControl.Designer.cs">
+    <Compile Include="UserControls\ConnectionUserControl.Designer.cs">
       <DependentUpon>ConnectionUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -60,7 +60,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ConnectionUserControl.resx">
+    <Compile Include="UserControls\MessageWindowUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MessageWindowUserControl.Designer.cs">
+      <DependentUpon>MessageWindowUserControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UserControls\ConnectionUserControl.resx">
       <DependentUpon>ConnectionUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -75,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\MessageWindowUserControl.resx">
+      <DependentUpon>MessageWindowUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Text_Me.Service;
 
-namespace Text_Me_Client.UI
+namespace Text_Me_Client.UI.UserControls
 {
     public partial class ConnectionUserControl : UserControl
     {
         Client client;
         StringBuilder logStringBuilder = new StringBuilder();
+        public Action<string> OnMessageReceived;
 
         public ConnectionUserControl()
         {
             InitializeComponent();
         }
-
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
             if (client != null && client.IsConnected)
@@ -35,6 +35,7 @@ namespace Text_Me_Client.UI
             {
                 client = new Client();
                 client.OnConnectionStatusChanged += LogReceived;
+                client.OnMessageReceived += MessageReceived;
                 int portNum = int.Parse(portNumStr);
                 client.Connect(ipAddressStr, portNum);
 
@@ -47,12 +48,16 @@ namespace Text_Me_Client.UI
             }
         }
 
+        private void MessageReceived(string receivedMessage)
+        {
+            OnMessageReceived?.Invoke(receivedMessage);
+        }
+
         private void LogReceived(ConnectionResult log)
         {
             logStringBuilder.AppendLine("Connection Result: " + log.ToString());
             UpdateLogText();
         }
-
         private void UpdateLogText()
         {
             if (textBoxLog.InvokeRequired)
@@ -64,6 +69,10 @@ namespace Text_Me_Client.UI
             {
                 textBoxLog.Text = logStringBuilder.ToString();
             }
+        }
+        public void SendMessage(string messageToSend)
+        {
+            client.SendMessage(messageToSend);
         }
     }
 }

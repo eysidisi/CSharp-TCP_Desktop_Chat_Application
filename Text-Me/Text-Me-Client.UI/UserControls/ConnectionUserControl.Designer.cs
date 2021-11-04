@@ -1,4 +1,4 @@
-﻿namespace Text_Me_Client.UI
+﻿namespace Text_Me_Client.UI.UserControls
 {
     partial class ConnectionUserControl
     {

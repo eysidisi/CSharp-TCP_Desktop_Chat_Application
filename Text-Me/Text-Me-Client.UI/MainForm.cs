@@ -15,6 +15,18 @@ namespace Text_Me_Client.UI
         public MainForm()
         {
             InitializeComponent();
+            messageWindowUserControl.OnSendMessage += SendMessage;
+            connectionUserControl.OnMessageReceived += MessageReceived;
+        }
+
+        private void MessageReceived(string receivedMessage)
+        {
+            messageWindowUserControl.MessageReceived(receivedMessage);
+        }
+
+        private void SendMessage(string messageToSend)
+        {
+            connectionUserControl.SendMessage(messageToSend);
         }
     }
 }
