@@ -12,7 +12,7 @@ namespace Text_Me_Client.UI.UserControls
 {
     public partial class MessageWindowUserControl : UserControl
     {
-        public Action<string> OnSendMessage;
+        public Func<string, bool> OnSendMessage;
         string _messageBoxString;
         public MessageWindowUserControl()
         {
@@ -21,12 +21,21 @@ namespace Text_Me_Client.UI.UserControls
 
         private void ButtonSend_Click(object sender, EventArgs e)
         {
-            string messageToSend = textBoxMessage.Text;
-            _messageBoxString += $"Send: {messageToSend}\r\n";
-            OnSendMessage?.Invoke(messageToSend);
-            UpdateMessageText();
-        }
 
+        }
+        private void SendMessage()
+        {
+            string messageToSend = textBoxMessage.Text;
+            if (String.IsNullOrEmpty(messageToSend))
+            {
+                return;
+            }
+            if (OnSendMessage != null && OnSendMessage(messageToSend))
+            {
+                _messageBoxString += $"Sent: {messageToSend}\r\n";
+                UpdateMessageText();
+            }
+        }
         public void MessageReceived(string receivedMessage)
         {
             _messageBoxString += $"Received: {receivedMessage}\r\n";
@@ -43,6 +52,16 @@ namespace Text_Me_Client.UI.UserControls
             else
             {
                 textBoxMessageDisplay.Text = _messageBoxString;
+            }
+        }
+
+        private void TextBoxMessage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendMessage();
+                textBoxMessage.Text = string.Empty;
+                e.SuppressKeyPress = true;
             }
 
         }

@@ -1,7 +1,7 @@
 ﻿using Text_Me_Client.UI.UserControls;
 namespace Text_Me_Client.UI
 {
-    partial class MainForm
+    partial class ClientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,31 +35,31 @@ namespace Text_Me_Client.UI
             // 
             // messageWindowUserControl
             // 
-            this.messageWindowUserControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.messageWindowUserControl.Location = new System.Drawing.Point(12, 45);
+            this.messageWindowUserControl.AutoSize = true;
+            this.messageWindowUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.messageWindowUserControl.Location = new System.Drawing.Point(5, 45);
             this.messageWindowUserControl.Name = "messageWindowUserControl";
-            this.messageWindowUserControl.Size = new System.Drawing.Size(557, 382);
+            this.messageWindowUserControl.Size = new System.Drawing.Size(456, 456);
             this.messageWindowUserControl.TabIndex = 1;
             // 
             // connectionUserControl
             // 
             this.connectionUserControl.AutoSize = true;
             this.connectionUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.connectionUserControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.connectionUserControl.Location = new System.Drawing.Point(636, 114);
+            this.connectionUserControl.Location = new System.Drawing.Point(467, 45);
             this.connectionUserControl.Name = "connectionUserControl";
-            this.connectionUserControl.Size = new System.Drawing.Size(233, 241);
+            this.connectionUserControl.Size = new System.Drawing.Size(306, 456);
             this.connectionUserControl.TabIndex = 0;
             // 
-            // MainForm
+            // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 495);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.messageWindowUserControl);
             this.Controls.Add(this.connectionUserControl);
-            this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Name = "ClientForm";
+            this.Text = "Client";
             this.ResumeLayout(false);
             this.PerformLayout();
 

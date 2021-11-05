@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Text_Me_Client.UI
 {
-    public partial class MainForm : Form
+    public partial class ClientForm : Form
     {
-        public MainForm()
+        public ClientForm()
         {
             InitializeComponent();
             messageWindowUserControl.OnSendMessage += SendMessage;
@@ -24,9 +24,9 @@ namespace Text_Me_Client.UI
             messageWindowUserControl.MessageReceived(receivedMessage);
         }
 
-        private void SendMessage(string messageToSend)
+        private bool SendMessage(string messageToSend)
         {
-            connectionUserControl.SendMessage(messageToSend);
+            return connectionUserControl.SendMessage(messageToSend);
         }
     }
 }

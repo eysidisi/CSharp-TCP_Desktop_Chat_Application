@@ -30,49 +30,78 @@
         {
             this.textBoxMessageDisplay = new System.Windows.Forms.TextBox();
             this.textBoxMessage = new System.Windows.Forms.TextBox();
-            this.buttonSend = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxMessageDisplay
             // 
-            this.textBoxMessageDisplay.Location = new System.Drawing.Point(108, 34);
+            this.textBoxMessageDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMessageDisplay.Location = new System.Drawing.Point(19, 28);
             this.textBoxMessageDisplay.Multiline = true;
             this.textBoxMessageDisplay.Name = "textBoxMessageDisplay";
             this.textBoxMessageDisplay.ReadOnly = true;
             this.textBoxMessageDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMessageDisplay.Size = new System.Drawing.Size(304, 205);
+            this.textBoxMessageDisplay.Size = new System.Drawing.Size(415, 285);
             this.textBoxMessageDisplay.TabIndex = 0;
             // 
             // textBoxMessage
             // 
-            this.textBoxMessage.Location = new System.Drawing.Point(108, 245);
+            this.textBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMessage.Location = new System.Drawing.Point(19, 354);
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
             this.textBoxMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMessage.Size = new System.Drawing.Size(304, 69);
+            this.textBoxMessage.Size = new System.Drawing.Size(415, 50);
             this.textBoxMessage.TabIndex = 1;
+            this.textBoxMessage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxMessage_KeyDown);
             // 
-            // buttonSend
+            // label1
             // 
-            this.buttonSend.Location = new System.Drawing.Point(198, 320);
-            this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(75, 23);
-            this.buttonSend.TabIndex = 2;
-            this.buttonSend.Text = "button1";
-            this.buttonSend.UseVisualStyleBackColor = true;
-            this.buttonSend.Click += new System.EventHandler(this.ButtonSend_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 333);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Message To Send:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 18);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Conversation:";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.textBoxMessage);
+            this.panel1.Controls.Add(this.textBoxMessageDisplay);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(450, 450);
+            this.panel1.TabIndex = 4;
             // 
             // MessageWindowUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonSend);
-            this.Controls.Add(this.textBoxMessage);
-            this.Controls.Add(this.textBoxMessageDisplay);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Controls.Add(this.panel1);
             this.Name = "MessageWindowUserControl";
-            this.Size = new System.Drawing.Size(557, 382);
+            this.Size = new System.Drawing.Size(456, 456);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -80,6 +109,8 @@
 
         private System.Windows.Forms.TextBox textBoxMessageDisplay;
         private System.Windows.Forms.TextBox textBoxMessage;
-        private System.Windows.Forms.Button buttonSend;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
