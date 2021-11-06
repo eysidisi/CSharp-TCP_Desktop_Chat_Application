@@ -104,9 +104,9 @@ namespace Text_Me_Client.UserControls
         }
         private void LogText(string text)
         {
+            logTextNum++;
             logStringBuilder.AppendLine($"{logTextNum}: {text}");
             UpdateLogText();
-            logTextNum++;
         }
         private void UpdateLogText()
         {

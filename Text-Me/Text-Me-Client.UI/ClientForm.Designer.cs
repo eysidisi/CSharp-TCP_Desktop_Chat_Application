@@ -43,11 +43,10 @@ namespace Text_Me_Client.UI
             // 
             // connectionUserControl
             // 
-            this.connectionUserControl.AutoSize = true;
             this.connectionUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.connectionUserControl.Location = new System.Drawing.Point(467, 45);
             this.connectionUserControl.Name = "connectionUserControl";
-            this.connectionUserControl.Size = new System.Drawing.Size(306, 456);
+            this.connectionUserControl.Size = new System.Drawing.Size(314, 456);
             this.connectionUserControl.TabIndex = 0;
             // 
             // ClientForm
@@ -60,7 +59,6 @@ namespace Text_Me_Client.UI
             this.Name = "ClientForm";
             this.Text = "Client";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
