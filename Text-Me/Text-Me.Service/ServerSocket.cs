@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Text_Me.Service
 {
-    public class Server : NodeSocket
+    public class ServerSocket : ParentSocket
     {
         TcpListener _listenerSocket;
         const int _portNum = 3838;
@@ -18,7 +18,7 @@ namespace Text_Me.Service
         /// If no ip address provided uses first IPV4 address it finds in ip address list of device
         /// </summary>
         /// <param name="ipAddressStr"></param>
-        public Server(string ipAddressStr = null, int portNum = _portNum)
+        public ServerSocket(string ipAddressStr = null, int portNum = _portNum)
         {
             if (ipAddressStr == null)
             {

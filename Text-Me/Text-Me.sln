@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text-Me.Test", "Text-Me.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text-Me-Client.UI", "Text-Me-Client.UI\Text-Me-Client.UI.csproj", "{ABDAB6F3-0925-4E8A-A79A-76EB372E6824}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text-Me-Server.UI", "Text-Me-Server.UI\Text-Me-Server.UI.csproj", "{D7A0E3A4-7A52-47D3-B593-23F8A258325C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text-Me-Client.UserControls", "Text-Me-Client.User-Controllers\Text-Me-Client.UserControls.csproj", "{7A5EE5B3-FBD7-4D92-A9CE-BC6FB398AA0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{ABDAB6F3-0925-4E8A-A79A-76EB372E6824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABDAB6F3-0925-4E8A-A79A-76EB372E6824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABDAB6F3-0925-4E8A-A79A-76EB372E6824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A0E3A4-7A52-47D3-B593-23F8A258325C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A0E3A4-7A52-47D3-B593-23F8A258325C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A0E3A4-7A52-47D3-B593-23F8A258325C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A0E3A4-7A52-47D3-B593-23F8A258325C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A5EE5B3-FBD7-4D92-A9CE-BC6FB398AA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5EE5B3-FBD7-4D92-A9CE-BC6FB398AA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5EE5B3-FBD7-4D92-A9CE-BC6FB398AA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5EE5B3-FBD7-4D92-A9CE-BC6FB398AA0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

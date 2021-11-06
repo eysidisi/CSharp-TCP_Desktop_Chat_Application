@@ -24,14 +24,14 @@ namespace Text_Me.Test.UserStories
             string messageToSend = "Motörhead Rulz!";
 
             // Create server
-            Server server = new Server(iPAddress, serverPortNum);
+            ServerSocket server = new ServerSocket(iPAddress, serverPortNum);
 
             // Wait connection
             server.StartAcceptingConnection();
             server.OnConnectionStatusChanged += ClientConnected;
 
             // Create client
-            Client client = new Client();
+            ClientSocket client = new ClientSocket();
             client.OnMessageReceived += MessageReceived;
 
             // Connect to server

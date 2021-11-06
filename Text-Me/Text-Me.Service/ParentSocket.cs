@@ -16,14 +16,27 @@ namespace Text_Me.Service
         UNKNOWN
     };
 
-    public abstract class NodeSocket
+    public abstract class ParentSocket
     {
         protected TcpClient _clientSocket;
+        protected Timer _checkConnectionTimer;
+
         private const int BufferSize = 1024;
+
         public Action<string> OnMessageReceived;
         public Action<ConnectionResult> OnConnectionStatusChanged;
         public Action<string> OnLog;
-        protected Timer _checkConnectionTimer;
+        public bool IsConnected
+        {
+            get
+            {
+                if (_clientSocket == null)
+                {
+                    return false;
+                }
+                return _clientSocket.Connected;
+            }
+        }
 
         protected readonly string _heartBeatMessage = "<I'm Alive>";
         protected readonly string _noConnectionMessage = "No Connection Avaible!";
@@ -41,7 +54,7 @@ namespace Text_Me.Service
                 while (stream.DataAvailable && (numberOfBytesReceived = stream.Read(receivedBytes, 0, receivedBytes.Length)) != 0)
                 {
                     // Translate data bytes to a ASCII string.
-                    string receivedMessage = Encoding.Default.GetString(receivedBytes, 0, numberOfBytesReceived);
+                    string receivedMessage = Encoding.UTF8.GetString(receivedBytes, 0, numberOfBytesReceived);
 
                     // Don't log heartbeat message to the user
                     if (receivedMessage.Equals(_heartBeatMessage))
@@ -60,7 +73,6 @@ namespace Text_Me.Service
                 }
             }
         }
-
         public void SendMessage(string message)
         {
             if (_clientSocket == null || _clientSocket.Connected == false)
@@ -76,12 +88,10 @@ namespace Text_Me.Service
                 return;
             }
 
-            byte[] bytesToSend = Encoding.Default.GetBytes(message);
+            byte[] bytesToSend = Encoding.UTF8.GetBytes(message);
             _clientSocket.GetStream().Write(bytesToSend, 0, bytesToSend.Length);
         }
-
         abstract protected void CloseConnection();
-
         protected bool CheckConnection()
         {
             try
@@ -104,7 +114,6 @@ namespace Text_Me.Service
                 return false;
             }
         }
-
         protected void HearthBeatFunc(object state)
         {
             // Already disconnected

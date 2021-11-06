@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Text_Me_Client.UI
+namespace Text_Me_Server.UI
 {
-    public partial class ClientForm : Form
+    public partial class ServerForm : Form
     {
-        public ClientForm()
+        public ServerForm()
         {
             InitializeComponent();
             messageWindowUserControl.OnSendMessage += SendMessage;
-            connectionUserControl.OnMessageReceived += MessageReceived;
+            serverConnectionUserControl.OnMessageReceived += MessageReceived;
         }
 
         private void MessageReceived(string receivedMessage)
@@ -26,7 +26,7 @@ namespace Text_Me_Client.UI
 
         private bool SendMessage(string messageToSend)
         {
-            return connectionUserControl.SendMessage(messageToSend);
+            return serverConnectionUserControl.SendMessage(messageToSend);
         }
     }
 }

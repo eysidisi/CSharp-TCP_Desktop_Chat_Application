@@ -1,7 +1,6 @@
-﻿using Text_Me_Client.UserControls;
-namespace Text_Me_Client.UI
+﻿namespace Text_Me_Server.UI
 {
-    partial class ClientForm
+    partial class ServerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,45 +28,42 @@ namespace Text_Me_Client.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.serverConnectionUserControl = new Text_Me_Client.UserControls.ServerConnectionUserControl();
             this.messageWindowUserControl = new Text_Me_Client.UserControls.MessageWindowUserControl();
-            this.connectionUserControl = new Text_Me_Client.UserControls.ClientConnectionUserControl();
             this.SuspendLayout();
+            // 
+            // serverConnectionUserControl
+            // 
+            this.serverConnectionUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.serverConnectionUserControl.Location = new System.Drawing.Point(370, 42);
+            this.serverConnectionUserControl.Name = "serverConnectionUserControl";
+            this.serverConnectionUserControl.Size = new System.Drawing.Size(411, 461);
+            this.serverConnectionUserControl.TabIndex = 2;
             // 
             // messageWindowUserControl
             // 
             this.messageWindowUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.messageWindowUserControl.Location = new System.Drawing.Point(5, 45);
+            this.messageWindowUserControl.Location = new System.Drawing.Point(12, 42);
             this.messageWindowUserControl.Name = "messageWindowUserControl";
-            this.messageWindowUserControl.Size = new System.Drawing.Size(456, 456);
+            this.messageWindowUserControl.Size = new System.Drawing.Size(343, 461);
             this.messageWindowUserControl.TabIndex = 1;
             // 
-            // connectionUserControl
-            // 
-            this.connectionUserControl.AutoSize = true;
-            this.connectionUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.connectionUserControl.Location = new System.Drawing.Point(467, 45);
-            this.connectionUserControl.Name = "connectionUserControl";
-            this.connectionUserControl.Size = new System.Drawing.Size(306, 456);
-            this.connectionUserControl.TabIndex = 0;
-            // 
-            // ClientForm
+            // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.serverConnectionUserControl);
             this.Controls.Add(this.messageWindowUserControl);
-            this.Controls.Add(this.connectionUserControl);
-            this.Name = "ClientForm";
-            this.Text = "Client";
+            this.Name = "ServerForm";
+            this.Text = "Server";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private ClientConnectionUserControl connectionUserControl;
-        private MessageWindowUserControl messageWindowUserControl;
+        private Text_Me_Client.UserControls.MessageWindowUserControl messageWindowUserControl;
+        private Text_Me_Client.UserControls.ServerConnectionUserControl serverConnectionUserControl;
     }
 }
 
