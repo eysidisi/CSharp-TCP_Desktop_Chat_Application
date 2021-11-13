@@ -38,15 +38,15 @@ namespace Text_Me_Client.UI
             this.messageWindowUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.messageWindowUserControl.Location = new System.Drawing.Point(5, 45);
             this.messageWindowUserControl.Name = "messageWindowUserControl";
-            this.messageWindowUserControl.Size = new System.Drawing.Size(456, 456);
+            this.messageWindowUserControl.Size = new System.Drawing.Size(450, 456);
             this.messageWindowUserControl.TabIndex = 1;
             // 
             // connectionUserControl
             // 
             this.connectionUserControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.connectionUserControl.Location = new System.Drawing.Point(467, 45);
+            this.connectionUserControl.Location = new System.Drawing.Point(479, 45);
             this.connectionUserControl.Name = "connectionUserControl";
-            this.connectionUserControl.Size = new System.Drawing.Size(314, 456);
+            this.connectionUserControl.Size = new System.Drawing.Size(300, 450);
             this.connectionUserControl.TabIndex = 0;
             // 
             // ClientForm
