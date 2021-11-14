@@ -1,20 +1,14 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+- This is a project that I created for making a desktop chat application. 
+- It works as a server/client application. This means that one of the users acts as a server and waits for a connection request to send and receive the data. The other user acts as a client and sends the request to start the communication. 
+- I chose C# as the programming language and I used WinForms for the UI. 
+- For sending and receiving packets between the server and the client I used TCP/IP protocols.
+
+You can also check out the related Azure DevOps project page to learn more about the project management methodology that I used using this [link](https://dev.azure.com/aihsanelmas/Text-Me). You can also watch this demo video to see how the application works. TODO: Add the video link
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
-
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+- Solution consists of 2 separate projects for server and client UI, 1 unit test project for 2 user stories, 1 library project for the logic behind the UI, and 1 User Controller project for creating reusable UI elements.
+- You can pull and start playing with the project. It doesn't require any additional steps other than having Visual Studio 2019 or a newer version.
 
 # Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+- Feel free to create any pull requests for improvements if you have any new ideas or bug fixes.
