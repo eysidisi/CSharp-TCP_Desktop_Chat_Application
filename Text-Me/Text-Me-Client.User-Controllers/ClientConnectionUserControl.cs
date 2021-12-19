@@ -18,7 +18,7 @@ namespace Text_Me_Client.UserControls
         StringBuilder logStringBuilder = new StringBuilder();
         public Action<string> OnMessageReceived;
         private int logTextNum = 0;
-
+        static private object logSyncObj = new object();
         public ClientConnectionUserControl()
         {
             InitializeComponent();
@@ -82,9 +82,12 @@ namespace Text_Me_Client.UserControls
         }
         private void LogText(string text)
         {
-            logStringBuilder.AppendLine($"{logTextNum}: {text}");
-            UpdateLogText();
-            logTextNum++;
+            lock (logSyncObj)
+            {
+                logStringBuilder.AppendLine($"{logTextNum}: {text}");
+                UpdateLogText();
+                logTextNum++; 
+            }
         }
         private void SetConnectionStatusColor(Color color)
         {

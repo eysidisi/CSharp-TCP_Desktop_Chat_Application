@@ -56,6 +56,9 @@ namespace Text_Me_Client.UI
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.messageWindowUserControl);
             this.Controls.Add(this.connectionUserControl);
+            this.Location = new System.Drawing.Point(800, 600);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ClientForm";
             this.Text = "Client";
             this.ResumeLayout(false);

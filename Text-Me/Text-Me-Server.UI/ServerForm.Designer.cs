@@ -55,6 +55,8 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.serverConnectionUserControl);
             this.Controls.Add(this.messageWindowUserControl);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ServerForm";
             this.Text = "Server";
             this.ResumeLayout(false);
